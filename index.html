@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StatutoryLetters.co.uk — UK Statutory Correspondence, Instantly</title>
+<meta name="description" content="Generate formally-structured UK statutory letters citing exact legislation. For individuals challenging public bodies and public sector organisations.">
+<style>
+:root {
+  --bg: #07010F; --surface: #0F0520; --card: #170A2E; --border: #2A1550;
+  --glow: #4A2888; --lilac: #C4A8E4; --lilacDim: #7A60A8;
+  --rose: #C85070; --roseBright: #E0607E; --gold: #C8902A; --goldBright: #E8B84A;
+  --text: #EDE6F8; --muted: #8070A8;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;font-size:15px;line-height:1.7;min-height:100vh}
+::selection{background:#C8507044;color:var(--text)}
+a{color:var(--rose);text-decoration:none}
+button{font-family:inherit;cursor:pointer;transition:all .2s}
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;border-bottom:1px solid var(--border);background:#0F052099;backdrop-filter:blur(12px);position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--rose),var(--lilac));display:flex;align-items:center;justify-content:center;font-size:15px}
+.logo-name{font-size:15px;font-weight:600;color:var(--lilac);letter-spacing:.04em}
+.nav-links{display:flex;gap:20px;font-size:13px}
+.nav-links a{color:var(--muted)}
+.bg-deco{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.bg-deco div{position:absolute;border-radius:50%}
+.bd1{top:-15%;right:-8%;width:500px;height:500px;background:radial-gradient(circle,#3D1F7A28 0%,transparent 70%)}
+.bd2{bottom:-8%;left:-5%;width:350px;height:350px;background:radial-gradient(circle,#C8507018 0%,transparent 70%)}
+.bd3{top:40%;left:25%;width:280px;height:280px;background:radial-gradient(circle,#C4A8E408 0%,transparent 70%)}
+.page{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:52px 20px}
+.page.narrow{max-width:640px}
+.hidden{display:none!important}
+.badge{display:inline-block;padding:5px 14px;border-radius:20px;border:1px solid #E8B84A44;color:var(--goldBright);font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:#E8B84A10;margin-bottom:22px}
+h1.hero{font-size:clamp(34px,6vw,62px);font-weight:700;line-height:1.1;margin-bottom:18px;background:linear-gradient(135deg,#EDE6F8 30%,var(--lilac));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:16px;color:var(--muted);max-width:500px;margin:0 auto 32px;line-height:1.75}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.btn-primary{padding:13px 32px;border-radius:8px;border:none;font-size:14px;font-weight:600;background:linear-gradient(135deg,var(--rose),var(--roseBright));color:#fff;box-shadow:0 4px 18px #C8507044}
+.btn-ghost{padding:13px 32px;border-radius:8px;font-size:14px;font-weight:500;background:transparent;color:var(--lilac);border:1px solid var(--border)}
+.btn-sm{padding:9px 18px;border-radius:8px;font-size:12px;font-weight:500;background:var(--card);color:var(--text);border:1px solid var(--border)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px}
+.features{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;margin-bottom:52px}
+.feature{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;text-align:center}
+.feature-icon{font-size:26px;margin-bottom:10px}
+.feature-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px}
+.feature-sub{font-size:11px;color:var(--muted)}
+.progress{display:flex;gap:6px;margin-bottom:28px}
+.progress-seg{flex:1;height:3px;border-radius:2px;background:var(--border);transition:background .3s}
+.progress-seg.done{background:var(--rose)}
+.progress-seg.active{background:var(--rose);box-shadow:0 0 8px #C8507080}
+.step-label{font-size:11px;color:var(--muted);margin-bottom:6px}
+.step-q{font-size:clamp(20px,4vw,28px);font-weight:700;margin-bottom:8px;line-height:1.2}
+.step-sub{font-size:13px;color:var(--muted);margin-bottom:28px}
+.choices{display:flex;flex-direction:column;gap:10px}
+.choice-btn{padding:13px 18px;text-align:left;border-radius:10px;background:var(--card);color:var(--text);border:1px solid var(--border);font-size:13px;transition:all .2s;font-family:inherit}
+.choice-btn.selected{background:#C8507022;color:var(--roseBright);border-color:var(--rose);box-shadow:0 0 12px #C8507030}
+.choice-btn.multi-selected{background:#C4A8E418;color:var(--lilac);border-color:var(--lilac)}
+.check{width:16px;height:16px;border-radius:4px;border:1.5px solid var(--border);display:inline-flex;align-items:center;justify-content:center;font-size:10px;margin-right:10px;flex-shrink:0;vertical-align:middle;transition:all .2s}
+.check.checked{background:var(--lilac);border-color:var(--lilac);color:var(--bg)}
+textarea,input[type=text]{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:11px 14px;font-family:inherit;font-size:13px;outline:none;resize:vertical;line-height:1.7}
+textarea:focus,input[type=text]:focus{border-color:var(--lilac)}
+.field-label{font-size:11px;color:var(--muted);display:block;margin-bottom:5px}
+.fields{display:flex;flex-direction:column;gap:14px}
+.required{color:var(--rose)}
+.btn-next{width:100%;padding:14px;border-radius:8px;border:none;margin-top:28px;font-size:14px;font-weight:600;font-family:inherit;background:linear-gradient(135deg,var(--rose),var(--roseBright));color:#fff;box-shadow:0 4px 18px #C8507044}
+.btn-next:disabled{opacity:.4;cursor:not-allowed}
+.mode-badge{padding:4px 12px;border-radius:12px;font-size:11px;font-weight:500}
+.mode-personal{background:#C8507022;color:var(--roseBright)}
+.mode-org{background:#C4A8E422;color:var(--lilac)}
+.spinner-wrap{text-align:center;padding:80px 0}
+.spinner{width:44px;height:44px;margin:0 auto 20px;border:3px solid var(--border);border-top:3px solid var(--rose);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.letter-actions{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.letter-box{background:var(--card);border:1px solid var(--glow);border-radius:14px;padding:24px;box-shadow:0 0 40px #3D1F7A35;margin-bottom:24px}
+.letter-header{display:flex;align-items:center;gap:8px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.letter-dot{width:7px;height:7px;border-radius:50%;background:var(--rose);box-shadow:0 0 5px var(--rose)}
+.letter-label{font-size:11px;color:var(--muted);letter-spacing:.05em}
+.statute-badge{margin-left:auto;padding:2px 9px;border-radius:10px;background:#C8902A18;color:var(--goldBright);font-size:10px;border:1px solid #C8902A33}
+pre.letter-content{font-family:inherit;font-size:13px;line-height:1.85;color:var(--text);white-space:pre-wrap;margin:0;word-break:break-word}
+.review-prompt{background:linear-gradient(135deg,var(--card),var(--surface));border:1px solid #C8902A33;border-radius:14px;padding:24px;text-align:center}
+.stars{display:flex;gap:3px}
+.star{font-size:20px;cursor:pointer;color:var(--border);transition:color .15s;user-select:none;line-height:1}
+.star.lit{color:var(--goldBright);text-shadow:0 0 8px #C8902A88}
+.star.readonly{cursor:default}
+.tabs{display:flex;gap:8px;margin-bottom:24px}
+.tab-btn{padding:8px 16px;border-radius:20px;border:none;font-family:inherit;font-size:12px;transition:all .2s}
+.tab-btn.active{background:var(--rose);color:#fff}
+.tab-btn:not(.active){background:var(--card);color:var(--muted)}
+.review-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:12px}
+.review-text{font-size:13px;color:var(--text);margin:9px 0 7px;line-height:1.7;font-style:italic}
+.review-author{font-size:11px;color:var(--lilacDim);font-weight:500}
+.bar-row{display:flex;align-items:center;gap:7px;margin-bottom:5px}
+.bar-track{flex:1;height:5px;background:var(--border);border-radius:3px;overflow:hidden}
+.bar-fill{height:100%;background:var(--goldBright);border-radius:3px}
+.legal-section{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px 28px;margin-bottom:16px}
+.legal-section h2{font-size:15px;font-weight:700;color:var(--lilac);margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.legal-section p{font-size:14px;line-height:1.8;color:var(--text);margin-bottom:10px}
+.legal-section p:last-child{margin-bottom:0}
+.warning-box{background:#C8507010;border-left:3px solid var(--rose);padding:14px 18px;border-radius:0 8px 8px 0;margin-bottom:20px;font-size:14px;line-height:1.7}
+</style>
+</head>
+<body>
+<div class="bg-deco"><div class="bd1"></div><div class="bd2"></div><div class="bd3"></div></div>
+<nav>
+  <a class="logo" href="#" onclick="showPage('home')">
+    <div class="logo-icon">⚖</div>
+    <span class="logo-name">StatutoryLetters.co.uk</span>
+  </a>
+  <div class="nav-links">
+    <a href="#" onclick="showPage('terms')">Terms</a>
+    <a href="#" onclick="showPage('privacy')">Privacy</a>
+  </div>
+</nav>
+
+<!-- HOME -->
+<div id="page-home" class="page" style="text-align:center">
+  <div class="badge">UK Public Law · Statute-Grounded · Ready to Send</div>
+  <h1 class="hero">Letters that carry<br>legal weight.</h1>
+  <p class="hero-sub">Generate formally-structured correspondence citing exact statute — not templates, not vague language. Real legal footing, in minutes.</p>
+  <div id="home-rating" class="hidden" style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:24px">
+    <div class="stars" id="home-stars"></div>
+    <span id="home-rating-text" style="font-size:13px;color:var(--muted)"></span>
+  </div>
+  <div class="hero-btns">
+    <button class="btn-primary" onclick="startMode('personal')">I need to challenge an organisation</button>
+    <button class="btn-ghost" onclick="startMode('org')">I work in the public sector</button>
+  </div>
+  <div class="features">
+    <div class="feature"><div class="feature-icon">⚖</div><div class="feature-title">Exact statute cited</div><div class="feature-sub">Section numbers, not generalities</div></div>
+    <div class="feature"><div class="feature-icon">📄</div><div class="feature-title">Download instantly</div><div class="feature-sub">Word document or print-to-PDF</div></div>
+    <div class="feature"><div class="feature-icon">🔁</div><div class="feature-title">Both sides served</div><div class="feature-sub">Citizens and public bodies</div></div>
+    <div class="feature"><div class="feature-icon">★</div><div class="feature-title">Review-verified</div><div class="feature-sub">Rated by real users</div></div>
+  </div>
+  <div id="home-reviews"></div>
+  <p style="font-size:11px;color:var(--muted);margin-top:48px">Not legal advice. Always consult a qualified solicitor for complex matters.</p>
+</div>
+
+<!-- FORM -->
+<div id="page-form" class="page narrow hidden">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:36px">
+    <button onclick="showPage('home')" style="background:none;border:none;color:var(--muted);font-size:13px">← Back</button>
+    <span id="mode-badge" class="mode-badge mode-personal">Personal</span>
+  </div>
+  <div class="progress" id="progress-bar"></div>
+  <div class="step-label" id="step-label"></div>
+  <div class="step-q" id="step-q"></div>
+  <div class="step-sub" id="step-sub"></div>
+  <div id="step-content"></div>
+  <button class="btn-next" id="btn-next" onclick="advance()" disabled>Continue →</button>
+</div>
+
+<!-- PREVIEW -->
+<div id="page-preview" class="page hidden" style="max-width:860px;margin:0 auto;padding:44px 20px">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:10px">
+    <button onclick="showPage('home')" style="background:none;border:none;color:var(--muted);font-size:13px">← Home</button>
+    <div class="tabs">
+      <button class="tab-btn active" id="tab-letter" onclick="switchTab('letter')">📄 Letter</button>
+      <button class="tab-btn" id="tab-reviews" onclick="switchTab('reviews')">★ Reviews</button>
+    </div>
+  </div>
+  <div id="tab-letter-content">
+    <div id="spinner-wrap" class="spinner-wrap">
+      <div class="spinner"></div>
+      <p style="color:var(--muted);font-size:14px">Drafting your letter with applicable statute…</p>
+    </div>
+    <div id="letter-wrap" class="hidden">
+      <div class="letter-actions">
+        <button class="btn-sm" onclick="copyLetter()" id="copy-btn">⎘ Copy</button>
+        <button class="btn-sm" onclick="downloadDoc()">↓ Word</button>
+        <button class="btn-sm" onclick="downloadPDF()">↓ PDF</button>
+        <button class="btn-sm" onclick="startMode(currentMode)" style="margin-left:auto">↺ New letter</button>
+      </div>
+      <div class="letter-box">
+        <div class="letter-header">
+          <div class="letter-dot"></div>
+          <span class="letter-label">GENERATED LETTER</span>
+          <span class="statute-badge">Statute-referenced</span>
+        </div>
+        <pre class="letter-content" id="letter-output"></pre>
+      </div>
+      <div class="review-prompt">
+        <div style="font-size:26px;margin-bottom:10px">★</div>
+        <h3 style="font-size:18px;font-weight:700;margin-bottom:6px">Was this useful?</h3>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:16px">Your review helps others in similar situations find this tool.</p>
+        <button class="btn-primary" style="font-size:13px;padding:11px 24px" onclick="switchTab('reviews');showReviewForm()">Leave a review</button>
+      </div>
+    </div>
+    <div id="error-wrap" class="hidden" style="text-align:center;padding:40px 0">
+      <p id="error-msg" style="color:var(--rose);margin-bottom:16px"></p>
+      <button class="btn-primary" onclick="startMode(currentMode)">Try again</button>
+    </div>
+  </div>
+  <div id="tab-reviews-content" class="hidden">
+    <div id="reviews-summary-wrap"></div>
+    <button class="btn-primary" id="write-review-btn" style="width:100%;padding:13px;margin-bottom:20px" onclick="showReviewForm()">+ Write a review</button>
+    <div id="review-form-wrap" class="hidden card" style="margin-bottom:20px;border-color:#C8902A44">
+      <h4 style="font-size:17px;font-weight:700;margin-bottom:18px">Your review</h4>
+      <div style="margin-bottom:14px">
+        <label class="field-label">Rating *</label>
+        <div class="stars" id="review-stars-input"></div>
+      </div>
+      <div style="margin-bottom:14px">
+        <label class="field-label">Your experience *</label>
+        <textarea id="review-text" rows="4" placeholder="Tell others how the letter worked for you…"></textarea>
+      </div>
+      <div style="margin-bottom:18px">
+        <label class="field-label">Name (optional)</label>
+        <input type="text" id="review-name" placeholder="First name or anonymous">
+      </div>
+      <div style="display:flex;gap:10px">
+        <button class="btn-primary" style="font-size:13px;padding:11px 22px" onclick="submitReview()">Submit</button>
+        <button class="btn-ghost" style="font-size:13px;padding:11px 22px" onclick="hideReviewForm()">Cancel</button>
+      </div>
+    </div>
+    <div id="reviews-list"></div>
+  </div>
+</div>
+
+<!-- TERMS -->
+<div id="page-terms" class="page hidden" style="max-width:760px">
+  <div style="margin-bottom:32px"><button onclick="showPage('home')" style="background:none;border:none;color:var(--muted);font-size:13px">← Back</button></div>
+  <div class="badge">Legal Document</div>
+  <h1 style="font-size:clamp(26px,5vw,40px);font-weight:700;background:linear-gradient(135deg,#EDE6F8 30%,var(--lilac));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px">Terms & Conditions</h1>
+  <p style="color:var(--muted);font-size:13px;margin-bottom:40px">Last updated: April 2026 · England and Wales</p>
+  <div class="warning-box"><strong style="color:var(--lilac)">⚠ Not Legal Advice:</strong> Nothing produced by this Platform constitutes legal advice. Letters generated are templates only. For matters of significant legal consequence, consult a qualified solicitor regulated by the SRA.</div>
+  <div class="legal-section"><h2>1. About These Terms</h2><p>These Terms govern your access to and use of StatutoryLetters.co.uk and statutoryletters.com. By using the Platform, you confirm you agree to these Terms.</p></div>
+  <div class="legal-section"><h2>2. Pricing</h2><p>Pay-per-letter: Personal £34.99 · Organisation £64.99. Monthly: Starter £44.99 · Pro £99.99 · Organisation £529 · Enterprise £999. Annual pricing: 20% discount. Prices inclusive of VAT.</p></div>
+  <div class="legal-section"><h2>3. Refunds</h2><p>Full refund within 14 days of first subscription if fewer than 3 letters generated. Statutory consumer rights unaffected.</p></div>
+  <div class="legal-section"><h2>4. Intellectual Property</h2><p>Generated letters belong to you. The Platform design, code, and branding belongs to us.</p></div>
+  <div class="legal-section"><h2>5. Governing Law</h2><p>England and Wales. Contact: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f49c9198989bb48780958081809b868d98918080918687da979bda819f">[email&#160;protected]</a></p></div>
+</div>
+
+<!-- PRIVACY -->
+<div id="page-privacy" class="page hidden" style="max-width:760px">
+  <div style="margin-bottom:32px"><button onclick="showPage('home')" style="background:none;border:none;color:var(--muted);font-size:13px">← Back</button></div>
+  <div class="badge">Legal Document</div>
+  <h1 style="font-size:clamp(26px,5vw,40px);font-weight:700;background:linear-gradient(135deg,#EDE6F8 30%,var(--lilac));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px">Privacy Policy</h1>
+  <p style="color:var(--muted);font-size:13px;margin-bottom:40px">Last updated: April 2026 · England and Wales</p>
+  <div class="legal-section"><h2>1. Who We Are</h2><p>StatutoryLetters.co.uk. Data Controller under UK GDPR. Contact: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2f5f5d46594e4c566f5c5b4e5b5a5b405d56434a5b5b4a5d5c014c40015a44">[email&#160;protected]</a></p></div>
+  <div class="legal-section"><h2>2. What We Collect</h2><p>Your name, issue description, organisation name, reference numbers. Payment data via Stripe. Review data.</p></div>
+  <div class="legal-section"><h2>3. Third Parties</h2><p>Anthropic (letter generation), Stripe (payments), Vercel (hosting). We do not sell your data.</p></div>
+  <div class="legal-section"><h2>4. Your Rights</h2><p>Access, rectification, erasure, portability under UK GDPR. Contact <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="fd8d8f948b9c9e84bd8e899c898889928f8491988989988f8ed39e92d38896">[email&#160;protected]</a>. Complaints to ICO at ico.org.uk.</p></div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const API_KEY = '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'
+
+const PERSONAL_Qs = [
+  { id:'org_type', type:'choice', q:'Who are you dealing with?', sub:'Select the type of organisation',
+    options:['Local Council / Authority','NHS Trust / Health Service','Housing Association','DWP / Benefits Agency','School / SEND Authority','Other Public Body'] },
+  { id:'issue', type:'textarea', q:'What is the issue?', sub:'Describe what happened — be as specific as possible',
+    placeholder:'e.g. The council refused to provide school transport for my child with an EHC plan, despite being legally required to do so under the Education Act 1996…' },
+  { id:'previous_contact', type:'multi', q:'What have you already done?', sub:'Select everything that applies',
+    options:['Nothing yet — this is first contact','Spoken to someone verbally','Sent an informal email or letter','Submitted a formal complaint','Received a response I disagree with','Made a Subject Access Request'] },
+  { id:'desired_outcome', type:'textarea', q:'What outcome do you want?', sub:'Be specific — this shapes the legal framing',
+    placeholder:'e.g. Immediate provision of transport, written acknowledgment of their statutory duty, and compensation for disruption caused…' },
+  { id:'details', type:'fields', q:'Your details', sub:'Used to personalise and reference your letter correctly',
+    fields:[
+      { id:'your_name', label:'Your full name', placeholder:'Full name', req:true },
+      { id:'org_name', label:'Organisation name', placeholder:'e.g. Kent County Council', req:true },
+      { id:'reference', label:'Reference number (if any)', placeholder:'Optional', req:false },
+      { id:'date_of_issue', label:'When did this issue begin?', placeholder:'e.g. September 2024', req:false },
+    ]}
+]
+
+const ORG_Qs = [
+  { id:'org_type', type:'choice', q:'What type of organisation are you?', sub:'This determines the statutory framework we apply',
+    options:['Local Authority / Council','NHS Trust','Housing Association','Academy / School','Combined Authority','Other Public Body'] },
+  { id:'comm_type', type:'choice', q:'What do you need to produce?', sub:'Select the type of communication',
+    options:['Response to a formal complaint','Statutory decision or notice letter','Policy communication to service users','Multi-agency or partner letter','Internal compliance document','Appeal outcome letter'] },
+  { id:'framework', type:'multi', q:'Which statutory framework applies?', sub:'Select all that are relevant',
+    options:['Education Act 1996 / SEND','Children and Families Act 2014','Care Act 2014','Housing Act 1996','Equality Act 2010 (s.149 PSED)','NHS Complaints Regulations 2009','Children Act 1989','Human Rights Act 1998'] },
+  { id:'context', type:'textarea', q:'What is the communication about?', sub:'Include key facts, decisions made, and any prior correspondence',
+    placeholder:'e.g. We are responding to a formal complaint regarding our refusal of a transport application…' },
+  { id:'details', type:'fields', q:'Communication details', sub:'Organisation and recipient information',
+    fields:[
+      { id:'org_name', label:'Your organisation name', placeholder:'e.g. Lambeth Borough Council', req:true },
+      { id:'recipient', label:'Recipient name / role', placeholder:'e.g. Ms J. Smith, Parent', req:true },
+      { id:'reference', label:'Case / reference number', placeholder:'Optional', req:false },
+      { id:'tone', label:'Preferred tone', placeholder:'e.g. Empathetic but firm', req:false },
+    ]}
+]
+
+let currentMode='personal', currentStep=0, answers={}, multiSel=[], fieldVals={}, textVal='', currentLetter='', reviews=[], reviewRating=0
+
+window.addEventListener('load',()=>{
+  const s=localStorage.getItem('sle_reviews_v3')
+  if(s) reviews=JSON.parse(s)
+  updateHomeReviews()
+  renderReviewStarsInput()
+})
+
+function showPage(id){
+  document.querySelectorAll('[id^="page-"]').forEach(p=>p.classList.add('hidden'))
+  document.getElementById('page-'+id).classList.remove('hidden')
+  window.scrollTo(0,0)
+}
+
+function startMode(mode){
+  currentMode=mode; currentStep=0; answers={}; multiSel=[]; fieldVals={}; textVal=''; currentLetter=''
+  const badge=document.getElementById('mode-badge')
+  badge.textContent=mode==='personal'?'Personal':'Organisation'
+  badge.className='mode-badge '+(mode==='personal'?'mode-personal':'mode-org')
+  showPage('form'); renderStep()
+}
+
+function getQuestions(){ return currentMode==='personal'?PERSONAL_Qs:ORG_Qs }
+
+function renderStep(){
+  const qs=getQuestions(), q=qs[currentStep]
+  document.getElementById('progress-bar').innerHTML=qs.map((_,i)=>`<div class="progress-seg ${i<currentStep?'done':i===currentStep?'active':''}"></div>`).join('')
+  document.getElementById('step-label').textContent=`Step ${currentStep+1} of ${qs.length}`
+  document.getElementById('step-q').textContent=q.q
+  document.getElementById('step-sub').textContent=q.sub
+  const content=document.getElementById('step-content')
+  if(q.type==='choice'){
+    content.innerHTML=`<div class="choices">${q.options.map(o=>`<button class="choice-btn ${answers[q.id]===o?'selected':''}" onclick="selectChoice('${o.replace(/'/g,"\\'")}')">${o}</button>`).join('')}</div>`
+  } else if(q.type==='multi'){
+    content.innerHTML=`<div class="choices">${q.options.map(o=>`<button class="choice-btn ${multiSel.includes(o)?'multi-selected':''}" onclick="toggleMulti('${o.replace(/'/g,"\\'")}')"><span class="check ${multiSel.includes(o)?'checked':''}">${multiSel.includes(o)?'✓':''}</span>${o}</button>`).join('')}</div>`
+  } else if(q.type==='textarea'){
+    content.innerHTML=`<textarea rows="5" placeholder="${q.placeholder||''}" oninput="textVal=this.value;checkNext()">${textVal}</textarea>`
+  } else if(q.type==='fields'){
+    content.innerHTML=`<div class="fields">${q.fields.map(f=>`<div><label class="field-label">${f.label}${f.req?'<span class="required"> *</span>':''}</label><input type="text" placeholder="${f.placeholder}" value="${fieldVals[f.id]||''}" oninput="fieldVals['${f.id}']=this.value;checkNext()"></div>`).join('')}</div>`
+  }
+  document.getElementById('btn-next').textContent=currentStep===qs.length-1?'Generate My Letter →':'Continue →'
+  checkNext()
+}
+
+function selectChoice(opt){ answers[getQuestions()[currentStep].id]=opt; renderStep() }
+function toggleMulti(opt){ multiSel.includes(opt)?multiSel=multiSel.filter(o=>o!==opt):multiSel.push(opt); renderStep() }
+
+function checkNext(){
+  const q=getQuestions()[currentStep]
+  let ok=false
+  if(q.type==='choice') ok=!!answers[q.id]
+  else if(q.type==='multi') ok=multiSel.length>0
+  else if(q.type==='textarea') ok=textVal.trim().length>8
+  else if(q.type==='fields') ok=q.fields.filter(f=>f.req).every(f=>(fieldVals[f.id]||'').trim())
+  document.getElementById('btn-next').disabled=!ok
+}
+
+function advance(){
+  const q=getQuestions()[currentStep]
+  if(q.type==='multi'){answers[q.id]=multiSel.join(', ');multiSel=[]}
+  else if(q.type==='textarea'){answers[q.id]=textVal;textVal=''}
+  else if(q.type==='fields'){answers[q.id]={...fieldVals}}
+  currentStep<getQuestions().length-1?(currentStep++,renderStep()):generateLetter()
+}
+
+async function generateLetter(){
+  showPage('preview'); switchTab('letter')
+  document.getElementById('spinner-wrap').classList.remove('hidden')
+  document.getElementById('letter-wrap').classList.add('hidden')
+  document.getElementById('error-wrap').classList.add('hidden')
+
+  const isP=currentMode==='personal', det=answers.details||{}
+  const today=new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'})
+
+  const sys=isP
+    ? `You are a specialist in UK statutory law. Write assertive, legally-grounded letters for members of the public challenging public bodies. Always cite exact statute section numbers (e.g. s.508B(6) Education Act 1996, s.149 Equality Act 2010, Care Act 2014, NHS Complaints Regulations 2009). Always include a 14-day response deadline and name the appropriate escalation route. Format as a complete formal letter. Today: ${today}.`
+    : `You are a specialist in UK public sector statutory compliance. Write professional, legally-compliant communications for public sector organisations. Always cite exact statute section numbers. State recipient rights clearly. Format as a complete formal letter. Today: ${today}.`
+
+  const msg=isP
+    ? `Generate a formal statutory challenge letter:\nOrg type: ${answers.org_type}\nIssue: ${answers.issue}\nPrevious contact: ${answers.previous_contact}\nDesired outcome: ${answers.desired_outcome}\nSender: ${det.your_name||'[Name]'}\nOrganisation: ${det.org_name||'[Org]'}\nReference: ${det.reference||'N/A'}\nBegan: ${det.date_of_issue||'Not specified'}`
+    : `Generate a formal statutory communication:\nOrg: ${answers.org_type}\nType: ${answers.comm_type}\nFrameworks: ${answers.framework}\nContext: ${answers.context}\nName: ${det.org_name||'[Org]'}\nRecipient: ${det.recipient||'[Recipient]'}\nReference: ${det.reference||'N/A'}\nTone: ${det.tone||'Professional'}`
+
+  try {
+    const res=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','x-api-key':API_KEY,'anthropic-version':'2023-06-01'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1500,system:sys,messages:[{role:'user',content:msg}]})
+    })
+    const data=await res.json()
+    const letter=data.content?.find(b=>b.type==='text')?.text
+    document.getElementById('spinner-wrap').classList.add('hidden')
+    if(!letter){
+      document.getElementById('error-msg').textContent='Generation failed. Please try again.'
+      document.getElementById('error-wrap').classList.remove('hidden')
+      return
+    }
+    currentLetter=letter
+    document.getElementById('letter-output').textContent=currentLetter
+    document.getElementById('letter-wrap').classList.remove('hidden')
+  } catch(e){
+    document.getElementById('spinner-wrap').classList.add('hidden')
+    document.getElementById('error-msg').textContent='Error: '+e.message
+    document.getElementById('error-wrap').classList.remove('hidden')
+  }
+}
+
+function copyLetter(){
+  navigator.clipboard.writeText(currentLetter)
+  const btn=document.getElementById('copy-btn')
+  btn.textContent='✓ Copied'; setTimeout(()=>btn.textContent='⎘ Copy',2200)
+}
+function downloadDoc(){
+  const blob=new Blob([`<html xmlns:o='urn:schemas-microsoft-com:office:office'><head><meta charset='utf-8'></head><body><pre style="font-family:Arial;font-size:12pt;white-space:pre-wrap;line-height:1.7">${currentLetter}</pre></body></html>`],{type:'application/msword'})
+  Object.assign(document.createElement('a'),{href:URL.createObjectURL(blob),download:'statutory-letter.doc'}).click()
+}
+function downloadPDF(){
+  const w=window.open('','_blank')
+  w.document.write(`<html><head><title>Statutory Letter</title><style>body{font-family:Arial;font-size:12pt;line-height:1.8;margin:50px}pre{white-space:pre-wrap}</style></head><body><pre>${currentLetter}</pre><script>window.onload=()=>{window.print();window.close()}<\/script></body></html>`)
+}
+
+function switchTab(tab){
+  document.getElementById('tab-letter-content').classList.toggle('hidden',tab!=='letter')
+  document.getElementById('tab-reviews-content').classList.toggle('hidden',tab==='letter')
+  document.getElementById('tab-letter').classList.toggle('active',tab==='letter')
+  document.getElementById('tab-reviews').classList.toggle('active',tab!=='letter')
+  if(tab==='reviews') renderReviewsTab()
+}
+
+function saveReviews(){ localStorage.setItem('sle_reviews_v3',JSON.stringify(reviews)) }
+function avgRating(){ return reviews.length?reviews.reduce((a,r)=>a+r.rating,0)/reviews.length:0 }
+function starsHTML(val,size=18,readonly=true){
+  return [1,2,3,4,5].map(n=>`<span class="star ${n<=val?'lit':''} ${readonly?'readonly':''}" style="font-size:${size}px" ${!readonly?`onclick="setReviewRating(${n})"`:''}>★</span>`).join('')
+}
+
+function updateHomeReviews(){
+  const avg=avgRating()
+  if(reviews.length>0){
+    const wrap=document.getElementById('home-rating')
+    wrap.classList.remove('hidden'); wrap.style.display='flex'
+    document.getElementById('home-stars').innerHTML=starsHTML(Math.round(avg),16)
+    document.getElementById('home-rating-text').textContent=`${avg.toFixed(1)} out of 5 · ${reviews.length} review${reviews.length!==1?'s':''}`
+  }
+  const rev=document.getElementById('home-reviews')
+  if(reviews.length>0){
+    rev.innerHTML=`<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px"><h2 style="font-size:20px;font-weight:700">What users say</h2></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px">
+    ${reviews.slice(0,3).map(r=>`<div class="review-card"><div class="stars">${starsHTML(r.rating,13)}</div><p class="review-text">"${r.text}"</p><div class="review-author">— ${r.name||'Anonymous'}</div></div>`).join('')}</div>`
+  }
+  const tb=document.getElementById('tab-reviews')
+  if(tb) tb.textContent=`★ Reviews${reviews.length?` (${reviews.length})`:''}`
+}
+
+function renderReviewsTab(){
+  const avg=avgRating()
+  const sumWrap=document.getElementById('reviews-summary-wrap')
+  sumWrap.innerHTML=reviews.length>0?`<div class="card" style="margin-bottom:20px;display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+    <div style="text-align:center"><div style="font-size:48px;font-weight:700;color:var(--goldBright);line-height:1">${avg.toFixed(1)}</div>
+    <div class="stars" style="justify-content:center">${starsHTML(Math.round(avg),15)}</div>
+    <div style="font-size:11px;color:var(--muted);margin-top:5px">${reviews.length} review${reviews.length!==1?'s':''}</div></div>
+    <div style="flex:1;min-width:140px">${[5,4,3,2,1].map(n=>{const c=reviews.filter(r=>r.rating===n).length,p=reviews.length?(c/reviews.length)*100:0
+      return `<div class="bar-row"><span style="font-size:11px;color:var(--muted);width:8px">${n}</span><div class="bar-track"><div class="bar-fill" style="width:${p}%"></div></div><span style="font-size:10px;color:var(--muted);width:16px">${c}</span></div>`}).join('')}</div></div>`
+    :''
+  document.getElementById('reviews-list').innerHTML=reviews.length===0
+    ?`<div style="text-align:center;padding:48px 0;color:var(--muted)"><div style="font-size:36px;margin-bottom:12px">✦</div><p>No reviews yet. Be the first.</p></div>`
+    :reviews.map(r=>`<div class="review-card"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:9px"><div class="stars">${starsHTML(r.rating,14)}</div><span style="font-size:10px;color:var(--muted)">${r.date}</span></div><p class="review-text">"${r.text}"</p><div class="review-author">— ${r.name||'Anonymous'}</div></div>`).join('')
+}
+
+function renderReviewStarsInput(){
+  const w=document.getElementById('review-stars-input')
+  if(w) w.innerHTML=starsHTML(reviewRating,26,false)
+}
+function setReviewRating(n){ reviewRating=n; renderReviewStarsInput() }
+function showReviewForm(){ document.getElementById('review-form-wrap').classList.remove('hidden'); document.getElementById('write-review-btn').classList.add('hidden') }
+function hideReviewForm(){ document.getElementById('review-form-wrap').classList.add('hidden'); document.getElementById('write-review-btn').classList.remove('hidden') }
+function submitRe
